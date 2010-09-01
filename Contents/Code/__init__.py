@@ -72,4 +72,13 @@ def ParseVideo(url):
 
     videoURL = re.search(r'<REF\sHREF=\"([^"]+)\"/>', referenceFile).group(1)
     
+    items = re.findall(r'<REF\sHREF=\"([^"]+)\"/>', referenceFile)
+    
+    videoURL = None
+    
+    if(len(items) > 1):
+        videoURL = items[1]
+    else:
+        videoURL = items[0]
+        
     return videoURL
